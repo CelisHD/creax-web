@@ -1,0 +1,221 @@
+{%- macro picture(file, alt, sizes, cls="", eager=false) -%}
+{%- set im = images[file] -%}
+<img class="{{ cls }}" src="{{ im.src }}" srcset="{{ im.srcset }}" sizes="{{ sizes }}" width="{{ im.w }}" height="{{ im.h }}" alt="{{ alt }}" loading="{{ 'eager' if eager else 'lazy' }}" decoding="async"{% if eager %} fetchpriority="high"{% endif %}>
+{%- endmacro -%}
+{%- macro arrow() -%}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>{%- endmacro -%}
+{%- set wa = "https://wa.me/" ~ sitio.contacto.whatsapp ~ "?text=" ~ (sitio.contacto.mensaje_whatsapp | urlencode) -%}
+{% if not preview %}<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+{% endif %}<title>{{ sitio.seo.titulo }}</title>
+{% if not preview %}<meta name="description" content="{{ sitio.seo.descripcion }}">
+{% if staging %}<meta name="robots" content="noindex, nofollow">
+{% else %}<link rel="canonical" href="{{ sitio.seo.url }}/">
+{% endif %}
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CL">
+<meta property="og:title" content="{{ sitio.seo.titulo }}">
+<meta property="og:description" content="{{ sitio.seo.descripcion }}">
+<meta property="og:url" content="{{ sitio.seo.url }}/">
+<meta property="og:image" content="{{ sitio.seo.url }}/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#f7f7f5">
+<script type="application/ld+json">{{ jsonld | safe }}</script>
+{% endif %}<link rel="preload" href="fonts/archivo-latin-wdth.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/styles.css?v={{ version }}">
+{% if not preview %}</head>
+<body>
+{% endif %}
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<header class="header wrap">
+  <a class="brand" href="#inicio" aria-label="{{ sitio.marca.nombre }}, ir al inicio">
+    {{ picture(sitio.marca.logo, "", "56px", "brand__logo", true) }}
+    <span class="brand__text">
+      <span class="brand__name">{{ sitio.marca.nombre }}</span>
+      <span class="brand__tagline">{{ sitio.marca.lema }}</span>
+    </span>
+  </a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg>
+  </button>
+  <nav class="nav" id="menu" aria-label="Principal">
+    {% for item in sitio.menu %}<a href="{{ item.enlace }}"{% if loop.first %} aria-current="page"{% endif %}>{{ item.texto }}</a>{% endfor %}
+    <a class="btn btn--dark btn--sm" href="#contacto">Cotizar proyecto</a>
+  </nav>
+</header>
+
+<main id="contenido">
+
+<section class="hero wrap" id="inicio">
+  <div class="hero__copy">
+    <p class="eyebrow">{{ inicio.hero.etiqueta }}</p>
+    <h1 class="display display--xl">{{ inicio.hero.titulo }}</h1>
+    <p class="lead">{{ inicio.hero.descripcion }}</p>
+    <div class="hero__actions">
+      <a class="btn btn--dark" href="#contacto">{{ inicio.hero.boton_principal }}</a>
+      <a class="link-arrow" href="#proyectos">{{ inicio.hero.boton_secundario }} {{ arrow() }}</a>
+    </div>
+  </div>
+  <div class="hero__grid">
+    {% for im in inicio.hero.imagenes %}{{ picture(im.imagen, im.alt, "(min-width: 1000px) 30vw, 50vw", "tile tile--" ~ loop.index, loop.index <= 2) }}{% endfor %}
+  </div>
+</section>
+
+<section class="strip" aria-label="Destacados">
+  <p class="strip__stat"><span class="strip__num">{{ inicio.destacados.cifra }}</span> {{ inicio.destacados.texto }}</p>
+  <ul class="strip__tags">
+    {% for a in inicio.destacados.atributos %}<li>{{ a }}</li>{% endfor %}
+  </ul>
+</section>
+
+<section class="section wrap" id="servicios">
+  <div class="section__head">
+    <div>
+      <p class="eyebrow">{{ inicio.servicios.etiqueta }}</p>
+      <h2 class="display display--lg">{{ inicio.servicios.titulo }}</h2>
+    </div>
+    <p class="section__intro">{{ inicio.servicios.descripcion }}</p>
+  </div>
+  <ol class="services">
+    {% for s in inicio.servicios.lista %}
+    <li class="service">
+      <span class="service__num">{{ "%02d" | format(loop.index) }}</span>
+      <h3 class="service__title">{{ s.titulo }}</h3>
+      <p class="service__text">{{ s.descripcion }}</p>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+
+<section class="section" id="proyectos">
+  <div class="section__head section__head--row wrap">
+    <h2 class="display display--lg">{{ inicio.trabajo.titulo }}</h2>
+    <a class="link-arrow" href="#contacto">{{ inicio.trabajo.enlace }} {{ arrow() }}</a>
+  </div>
+  <ul class="work">
+    {% for c in inicio.trabajo.categorias %}
+    <li class="work__item">
+      {{ picture(c.imagen, c.alt, "(min-width: 1000px) 20vw, 50vw", "work__img") }}
+      <span class="work__label">{{ c.nombre }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section class="section about wrap" id="nosotros">
+  {{ picture(inicio.nosotros.imagen, inicio.nosotros.alt, "(min-width: 1000px) 45vw, 100vw", "about__img") }}
+  <div class="about__copy">
+    <p class="eyebrow">{{ inicio.nosotros.etiqueta }}</p>
+    <h2 class="display display--md">{{ inicio.nosotros.titulo }}</h2>
+    {% for p in inicio.nosotros.parrafos %}<p class="body">{{ p }}</p>{% endfor %}
+    <dl class="facts">
+      {% for d in inicio.nosotros.datos %}<div><dt>{{ d.etiqueta }}</dt><dd>{{ d.valor }}</dd></div>{% endfor %}
+    </dl>
+  </div>
+</section>
+
+<section class="section faq wrap" aria-labelledby="faq-titulo">
+  <div>
+    <p class="eyebrow">{{ inicio.faq.etiqueta }}</p>
+    <h2 class="display display--md" id="faq-titulo">{{ inicio.faq.titulo }}</h2>
+  </div>
+  <div class="faq__list">
+    {% for q in inicio.faq.preguntas %}
+    <details name="faq"{% if loop.first %} open{% endif %}>
+      <summary>{{ q.pregunta }}<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></summary>
+      <p>{{ q.respuesta }}</p>
+    </details>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section contact wrap" id="contacto">
+  <div class="contact__copy">
+    <p class="eyebrow">{{ inicio.contacto.etiqueta }}</p>
+    <h2 class="display display--xl">{{ inicio.contacto.titulo }}</h2>
+    <p class="lead">{{ inicio.contacto.descripcion }}</p>
+    <p class="contact__direct">
+      <a href="mailto:{{ sitio.contacto.email }}">{{ sitio.contacto.email }}</a>
+      <a href="tel:{{ sitio.contacto.telefono | replace(' ', '') }}">{{ sitio.contacto.telefono }}</a>
+    </p>
+  </div>
+  <form class="form" id="form-cotizar" data-whatsapp="{{ sitio.contacto.whatsapp }}" novalidate>
+    <div class="form__field">
+      <label for="f-nombre">Nombre completo</label>
+      <input id="f-nombre" name="nombre" type="text" maxlength="100" autocomplete="name" required placeholder="Tu nombre">
+    </div>
+    <div class="form__field">
+      <label for="f-email">Correo</label>
+      <input id="f-email" name="email" type="email" maxlength="120" autocomplete="email" placeholder="nombre@empresa.cl">
+    </div>
+    <div class="form__row">
+      <div class="form__field">
+        <label for="f-empresa">Empresa</label>
+        <input id="f-empresa" name="empresa" type="text" maxlength="100" autocomplete="organization" placeholder="Opcional">
+      </div>
+      <div class="form__field">
+        <label for="f-telefono">Teléfono</label>
+        <input id="f-telefono" name="telefono" type="tel" maxlength="30" autocomplete="tel" placeholder="+56 9">
+      </div>
+    </div>
+    <div class="form__field">
+      <label for="f-proyecto">Cuéntanos sobre tu proyecto</label>
+      <textarea id="f-proyecto" name="proyecto" rows="4" maxlength="1500" required placeholder="Qué necesitas, cantidades, tamaños, fecha…"></textarea>
+    </div>
+    <p class="form__error" id="form-error" role="alert" hidden>Escribe tu nombre y una descripción del proyecto. Si indicas un correo, debe ser válido.</p>
+    <div class="form__actions">
+      <button class="btn btn--light" type="submit">{{ inicio.contacto.boton }}</button>
+      <span class="form__note">{{ inicio.contacto.nota }}</span>
+    </div>
+    <p class="form__done" id="form-done" hidden>Tu mensaje está listo. <a id="form-link" href="{{ wa }}" target="_blank" rel="noopener noreferrer">Abrir WhatsApp</a> para enviarlo.</p>
+  </form>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__inner wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <span class="footer__name">{{ sitio.marca.nombre }}</span>
+        <p>{{ sitio.marca.descripcion }}</p>
+      </div>
+      <nav aria-label="Navegación del pie">
+        <h3>Navegación</h3>
+        {% for item in sitio.menu %}<a href="{{ item.enlace }}">{{ item.texto }}</a>{% endfor %}
+      </nav>
+      <div>
+        <h3>Servicios</h3>
+        {% for s in sitio.footer.servicios %}<a href="#servicios">{{ s }}</a>{% endfor %}
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <a href="mailto:{{ sitio.contacto.email }}">{{ sitio.contacto.email }}</a>
+        <a href="tel:{{ sitio.contacto.telefono | replace(' ', '') }}">{{ sitio.contacto.telefono }}</a>
+        <span>{{ sitio.contacto.direccion }}</span>
+        <span class="footer__social">
+          <a href="{{ sitio.contacto.instagram }}" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="{{ sitio.contacto.linkedin }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </span>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>{{ sitio.footer.derechos }}</span>
+      <span>Impresión 3D de precisión en {{ sitio.contacto.ciudad }}, Chile</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="{{ wa }}" target="_blank" rel="noopener noreferrer" aria-label="Escríbenos por WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.5 7.4L3 21l2.1-5.3A8.4 8.4 0 1 1 21 11.5z"/></svg>
+</a>
+
+<script src="js/main.js?v={{ version }}" defer></script>
+{% if not preview %}</body>
+</html>
+{% endif %}

@@ -1,0 +1,4 @@
+.env
+preview/
+__pycache__/
+dist/

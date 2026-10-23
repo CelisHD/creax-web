@@ -1,0 +1,37 @@
+{
+  "seo": {
+    "titulo": "CREAX | Impresión 3D y Fabricación Digital en Chile - Trofeos, Esculturas y Prototipos",
+    "descripcion": "Diseño, impresión 3D y fabricación digital en Santiago de Chile. Trofeos, esculturas de gran formato, prototipos, moldes, maquetas y escaneo 3D. Cotización gratuita.",
+    "url": "https://creax.cl",
+    "imagen_compartir": "hero-turbojet.webp"
+  },
+  "marca": {
+    "nombre": "Creax",
+    "lema": "Soluciones 3D para marcas",
+    "logo": "logo.webp",
+    "descripcion": "Diseño y fabricación de piezas físicas de alto impacto para empresas, eventos y espacios comerciales."
+  },
+  "contacto": {
+    "email": "contacto@creax.cl",
+    "telefono": "+56 9 2231 4378",
+    "whatsapp": "56922314378",
+    "mensaje_whatsapp": "Hola, vi su página web y me interesa cotizar un proyecto. ¿Podemos conversar?",
+    "direccion": "Hoevel 5530, Quinta Normal",
+    "ciudad": "Santiago",
+    "region": "Región Metropolitana",
+    "pais": "CL",
+    "instagram": "https://instagram.com/creax_cl",
+    "linkedin": "https://www.linkedin.com/company/creax-ingenieria-jyd-spa/"
+  },
+  "menu": [
+    { "texto": "Inicio", "enlace": "#inicio" },
+    { "texto": "Nosotros", "enlace": "#nosotros" },
+    { "texto": "Servicios", "enlace": "#servicios" },
+    { "texto": "Proyectos", "enlace": "#proyectos" },
+    { "texto": "Contacto", "enlace": "#contacto" }
+  ],
+  "footer": {
+    "servicios": ["Trofeos", "Esculturas 3D", "Prototipado", "Escaneo 3D"],
+    "derechos": "© 2026 CREAX. Todos los derechos reservados."
+  }
+}

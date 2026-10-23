@@ -1,0 +1,76 @@
+{
+  "hero": {
+    "etiqueta": "Impresión 3D de precisión en Chile",
+    "titulo": "Convertimos ideas en realidad.",
+    "descripcion": "Diseño, impresión 3D y fabricación digital para todo tipo de proyectos en Chile. Desde trofeos y esculturas hasta prototipos y maquetas. Calidad garantizada.",
+    "boton_principal": "Cotiza tu proyecto gratis",
+    "boton_secundario": "Ver proyectos realizados",
+    "imagenes": [
+      { "imagen": "hero-turbojet.webp", "alt": "Turbina impresa en 3D" },
+      { "imagen": "trabajo-trofeo-guardianes.webp", "alt": "Trofeo Guardianes del Nido impreso en 3D" },
+      { "imagen": "trabajo-maqueta-edificio.webp", "alt": "Maqueta de edificio impresa en 3D" },
+      { "imagen": "escultura-gato-mascota.webp", "alt": "Escultura de mascota en gran formato" }
+    ]
+  },
+  "destacados": {
+    "cifra": "3+",
+    "texto": "años de experiencia y cientos de proyectos",
+    "atributos": ["Rápido", "Garantía", "Puntual"]
+  },
+  "servicios": {
+    "etiqueta": "Nuestros servicios",
+    "titulo": "Todo lo que necesitas para destacar",
+    "descripcion": "Desde trofeos y reconocimientos hasta esculturas, prototipos y maquetas. Soluciones completas de diseño, escaneo 3D y fabricación digital.",
+    "lista": [
+      { "titulo": "Trofeos y Reconocimientos", "descripcion": "Piezas únicas que elevan el prestigio de tu evento con diseño 100% personalizado." },
+      { "titulo": "Esculturas de Alto Impacto", "descripcion": "Figuras 3D de gran formato que transforman espacios en puntos focales memorables." },
+      { "titulo": "Prototipado y Desarrollo", "descripcion": "De la idea al objeto físico listo para validar, presentar o comercializar." },
+      { "titulo": "Moldes y Maquetas", "descripcion": "Herramientas para producción repetible con precisión industrial." },
+      { "titulo": "Escaneo 3D y CAD", "descripcion": "Digitalizamos objetos existentes para replicarlos o mejorarlos con precisión." }
+    ]
+  },
+  "trabajo": {
+    "titulo": "Nuestro trabajo",
+    "enlace": "Ver todos los proyectos",
+    "categorias": [
+      { "nombre": "Trofeos", "imagen": "trabajo-trofeo-guardianes.webp", "alt": "Trofeo impreso en 3D" },
+      { "nombre": "Esculturas", "imagen": "escultura-gato-mascota.webp", "alt": "Escultura de mascota" },
+      { "nombre": "Prototipos", "imagen": "trabajo-figura-peashooter.webp", "alt": "Figura impresa en 3D" },
+      { "nombre": "Moldes y Maquetas", "imagen": "trabajo-maqueta-edificio.webp", "alt": "Maqueta de edificio" },
+      { "nombre": "& mucho más", "imagen": "hero-turbojet.webp", "alt": "Turbina impresa en 3D" }
+    ]
+  },
+  "nosotros": {
+    "etiqueta": "Nosotros",
+    "titulo": "Impresión 3D de alta calidad en Chile",
+    "parrafos": [
+      "Somos especialistas en fabricación digital, impresión 3D y diseño. Con más de 3 años de experiencia, hemos desarrollado cientos de proyectos para empresas: trofeos corporativos, esculturas de gran formato, prototipos industriales, maquetas técnicas y figuras personalizadas.",
+      "Cada proyecto recibe atención especializada, independiente de su tamaño o complejidad."
+    ],
+    "datos": [
+      { "etiqueta": "Taller", "valor": "Santiago" },
+      { "etiqueta": "Tecnología", "valor": "FDM" },
+      { "etiqueta": "Materiales", "valor": "PLA · ABS · PETG" }
+    ],
+    "imagen": "trabajo-maqueta-tuberias.webp",
+    "alt": "Maqueta técnica de tuberías impresa en 3D"
+  },
+  "faq": {
+    "etiqueta": "Preguntas frecuentes",
+    "titulo": "Todo lo que necesitas saber",
+    "preguntas": [
+      { "pregunta": "¿Cuánto tiempo tarda un proyecto de impresión 3D?", "respuesta": "Depende de la cantidad de unidades, la complejidad del diseño, las dimensiones de las piezas y nuestra carga de trabajo. Hay proyectos pequeños listos en pocos días y producciones más grandes que requieren más tiempo. Te damos un estimado preciso al cotizar." },
+      { "pregunta": "¿Qué materiales utilizan?", "respuesta": "Trabajamos con tecnología FDM (Modelado por Deposición Fundida) y materiales como PLA, ABS, PETG y filamentos técnicos especiales. Te asesoramos para elegir el mejor material según tu aplicación." },
+      { "pregunta": "¿Pueden crear un diseño desde cero?", "respuesta": "¡Por supuesto! Creamos cualquier modelo desde cero a partir de tus ideas, bocetos o referencias. También escaneamos objetos existentes para replicarlos o modificarlos." },
+      { "pregunta": "¿Qué tipo de proyectos realizan?", "respuesta": "Trofeos y reconocimientos, esculturas de gran formato, prototipos funcionales, moldes y maquetas técnicas, figuras personalizadas, piezas industriales, escaneo 3D y modelado CAD." },
+      { "pregunta": "¿Realizan envíos a todo Chile?", "respuesta": "Sí, enviamos a todo Chile por Starken, Chilexpress o Blue Express. Para proyectos grandes en Santiago ofrecemos entrega personalizada. El costo se calcula según destino y tamaño." }
+    ]
+  },
+  "contacto": {
+    "etiqueta": "¿Listo para destacar?",
+    "titulo": "Cuéntanos tu idea.",
+    "descripcion": "La transformamos en una pieza física que genere impacto y resultados para tu marca. Cotización gratuita y sin compromiso.",
+    "boton": "Enviar por WhatsApp",
+    "nota": "Gratis y sin compromiso"
+  }
+}
