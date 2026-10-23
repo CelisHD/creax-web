@@ -44,6 +44,15 @@ y abrir http://localhost:8000
   El build genera automáticamente versiones de 640, 1200 y 1800 px en WebP.
 - **Contacto / WhatsApp**: `content/sitio.json` → `contacto`.
 
+## Vista previa para el cliente (GitHub Pages)
+
+Cada `git push` a `main` ejecuta `.github/workflows/pages.yml`, que corre
+`python build.py --staging` y publica en https://celishd.github.io/creax-web/
+(tarda ~1 minuto). Esta versión lleva `noindex` y `robots.txt` con `Disallow`
+para que Google no la indexe; el sitio definitivo se genera con `python build.py`.
+
+Flujo de cambios: editar `content/*.json` o `assets/` → `git commit` → `git push`.
+
 ## Publicar en el servidor propio (Docker + Cloudflare Tunnel)
 
 El servidor solo necesita Docker. La imagen genera el sitio y lo sirve con Caddy
